@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Productitem;
+use App\Staff;
+use Faker\Provider\Person;
 use Illuminate\Routing\Controller as BaseController;
 
 class Test extends BaseController
@@ -26,5 +28,9 @@ class Test extends BaseController
         $item1->order_id=1;
         $item1->save();
         echo "Done add product";
+    }
+    function manytomay(){
+        $staff = new Staff();
+        $person = new Person();
     }
 }

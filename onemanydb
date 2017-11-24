@@ -1,0 +1,42 @@
+-create skima:
+
+php artisan make:migration create_orders --create=orders
+php artisan make:migration create_productitems --create=productitems
+
+-create table class: "orders"
+$table->increments('id');
+$table->date('order_date');
+$table->timestamps();
+
+-create table class: 'productitems'
+$table->string('name');
+            $table->string('description');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->timestamps();
+
+-create table command all:
+php artisan migrate
+
+-create model
+php artisan make:model Order
+
+
+-create model:class(Order)
+public $table="orders"
+public function productitems(){
+	return $this->hasMany('App\Productitem');
+}
+-create model:class(ProductItem)
+public $table="orders"
+public function order(){
+	return $this->belongsTo('App\Order');
+}
+
+=====================Error==========
+php artisan cache:clear
+composer dump-autoload -o
+composer update
+php artisan migrate:rollback
+
+

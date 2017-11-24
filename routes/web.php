@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/addproduct','Test@addProduct');
+Route::get('/manytomany','Test@manytomay');
 

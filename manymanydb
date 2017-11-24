@@ -1,0 +1,45 @@
++ patient
+- patient_id
+- patient_first_name
+- patient_last_name
++ patient_staff
+- patient_id
+- staff_id
++ staff
+- staff_first_name
+- staff_last_name
+--------------------create db-----------
+php artisan make:migration create_staffs --create=staffs
+php artisan make:migration create_patients --create=patients
+php artisan make:migration create_patient_staff --create=staff_patient
+---------------------create properties table from class------
++ staff
+$table->increments('id');
+$table->string('first_name');
+$table->date('dob');
++ Patient
+$table->increments('id');
+$table->string('first_name');
++ PatientStaff
+$table->integer('staff_id')->unsigned();
+$table->foreign('staff_id')->references('id')->on('staffs');
+
+$table->integer('patient_id')->unsigned();
+$table->foreign('patient_id')->references('id')->on('patients');
+
+--------------------------create model------------------
+php artisan make:model Patient
+php artisan make:model Staff
+php artisan make:model StaffPatient
+
+---------------------------create properties and method in classes---------
++ Staff
+public $table="staffs";
+public function patients(){
+	return $this->belongsToMany('App\Patient');
+}
++ Patient
+public $table="patients";
+public function staffs(){
+	return $this->belongsToMany('App\Staff');
+}
