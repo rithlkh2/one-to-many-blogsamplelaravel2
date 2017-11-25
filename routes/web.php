@@ -20,3 +20,7 @@ Route::get('/manytomany','Test@manytomay');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix'=>'users'],function(){
+    Route::resource('/','LearnController');
+});
