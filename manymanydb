@@ -43,3 +43,6 @@ public $table="patients";
 public function staffs(){
 	return $this->belongsToMany('App\Staff');
 }
+------------------------------------------
+php artisan migrate:rollback
+------------------Noted patient_staff and staff with patient must exactly-------------------------

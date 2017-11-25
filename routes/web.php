@@ -16,4 +16,3 @@ Route::get('/', function () {
 });
 Route::get('/addproduct','Test@addProduct');
 Route::get('/manytomany','Test@manytomay');
-

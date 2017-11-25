@@ -10,8 +10,10 @@ namespace App\Http\Controllers;
 
 
 use App\Order;
+use App\Patient;
 use App\Productitem;
 use App\Staff;
+use App\StaffPatient;
 use Faker\Provider\Person;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -31,6 +33,20 @@ class Test extends BaseController
     }
     function manytomay(){
         $staff = new Staff();
-        $person = new Person();
+        $patient = new Patient();
+
+        $staff->first_name = 'Dara';
+        $staff->dob = '2017-10-10';
+        $staff->save();
+
+        $patient->patient_first_name = 'patient_Dara';
+        $patient->save();
+
+        $staffpatient = new StaffPatient();
+        $staffpatient->staff_id = $staff->id;
+        $staffpatient->patient_id = $patient->id;
+        $staffpatient->save();
+
+        echo "Done Saved Staff";
     }
 }
