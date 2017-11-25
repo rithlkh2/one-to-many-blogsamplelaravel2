@@ -44,5 +44,7 @@ public function staffs(){
 	return $this->belongsToMany('App\Staff');
 }
 ------------------------------------------
-php artisan migrate:rollback
+php artisan migrate:rollback =>update model
 ------------------Noted patient_staff and staff with patient must exactly-------------------------
+---------------------create login ---------
+php artisan make:auth

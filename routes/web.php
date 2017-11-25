@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 Route::get('/addproduct','Test@addProduct');
 Route::get('/manytomany','Test@manytomay');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
